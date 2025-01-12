@@ -11,8 +11,6 @@ body {
 
 .app-container {
   max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -44,18 +42,18 @@ body {
 }
 
 .nav-bar a:hover {
-  text-decoration: underline;
   font-weight: bold;
 }
 
 .hero-container {
   position: relative;
-  width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
   padding: 2rem;
   color: #fff;
+  width: 50%;
+  height: 100vh;
+  flex-shrink: 0;
 }
 
 .hero-content {
@@ -76,22 +74,19 @@ body {
   margin-bottom: 2rem;
 }
 
-.about-section,
-.works-section {
-  width: 100%;
+.about-section {
+  position: relative;
   display: block;
   padding: 3rem 2rem;
   text-align: right;
-  height: 50vh;
+  width: 50%;
+  height: 100vh;
   background-color: transparent;
+  flex-shrink: 0;
 }
 
 .about-section {
   margin-top: 0;
-}
-
-.works-section {
-  margin-top: 50vh;
 }
 
 .section-title {
@@ -108,6 +103,18 @@ body {
   text-align: right;
 }
 
+.works-section {
+  position: relative;
+  display: block;
+  padding: 3rem 2rem;
+  text-align: right;
+  width: 50%;
+  height: 50vh;
+  background-color: transparent;
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
 .portfolio-container {
   display: flex;
   flex-wrap: wrap;
@@ -117,10 +124,20 @@ body {
 
 .footer {
   margin-top: auto;
-  background-color: #333;
   color: #fff;
   padding: 1rem;
   text-align: center;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.main-content > * {
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
@@ -140,13 +157,14 @@ body {
     height: auto;
   }
 
-  .about-section,
-  .works-section {
+  .about-section {
     width: 100%;
     height: auto;
   }
+
   .works-section {
-    margin-top: 0;
+    width: 100%;
+    height: auto;
   }
 
   .section-title {
