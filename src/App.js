@@ -1,6 +1,38 @@
+import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 
 function App() {
+  const cursorTrailRef = useRef(null);
+  const isMouseMoving = useRef(false);
+
+  const handleMouseMove = (event) => {
+    if (cursorTrailRef.current) {
+      const { clientX, clientY } = event;
+      cursorTrailRef.current.style.transform = `translate(${clientX}px, ${clientY}px)`;
+      if (!isMouseMoving.current) {
+        cursorTrailRef.current.classList.add("moving");
+        isMouseMoving.current = true;
+      }
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (cursorTrailRef.current) {
+      cursorTrailRef.current.classList.remove("moving");
+      isMouseMoving.current = false;
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
   return (
     <div className="app-container">
       <header className="header">
@@ -14,16 +46,14 @@ function App() {
       <div id="home" className="hero-container">
         <div className="hero-content">
           <h1 className="hero-title">Kenth Condez</h1>
-          <p className="hero-subtitle">Software Developer</p>
+          <p className="hero-subtitle">Web Developer</p>
         </div>
       </div>
 
       <div id="about" className="about-section">
         <h2 className="section-title">About Me</h2>
         <p className="section-content">
-          I am a creative developer with a focus on web design, software
-          development, and problem-solving. With a passion for technology, I aim
-          to create projects that make a difference.
+          A web developer with background in design and development.
         </p>
       </div>
 
@@ -48,9 +78,11 @@ function App() {
         </div>
       </div>
 
-      <footer className="footer">
-        &copy; 2025 Kenth Condez. All rights reserved.
-      </footer>
+      <div
+        className="cursor-trail"
+        ref={cursorTrailRef}
+        style={{ position: "fixed", top: 0, left: 0 }}
+      />
     </div>
   );
 }
