@@ -140,14 +140,14 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 200px; /* increased size */
-  height: 200px;
+  width: 250px; /* increased size */
+  height: 250px;
   background: radial-gradient(#ff9900, #ff6600); /* warm gradient color */
   border-radius: 50%;
   pointer-events: none;
   transition: transform 0.1s ease-out;
   z-index: -1; /* move the trail behind the text */
-  filter: blur(10px); /* add a blur effect for a smoother texture */
+  filter: blur(20px); /* add a blur effect for a smoother texture */
   opacity: 1; /* initial opacity is 1 */
 }
 
@@ -156,14 +156,14 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   background: radial-gradient(#ff9900, #ff6600); /* warm gradient color */
   border-radius: 50%;
   opacity: 0.5;
   transform: scale(1.5);
-  filter: blur(10px); /* add a blur effect for a smoother texture */
-  animation: fluid-motion 3s infinite; /* add animation */
+  filter: blur(20px); /* add a blur effect for a smoother texture */
+  animation: fluid-motion 2s infinite; /* add animation */
 }
 
 @keyframes gravity-motion {
@@ -182,8 +182,14 @@ body {
   0% {
     transform: scale(1) translate(0, 0);
   }
+  25% {
+    transform: scale(1.1) translate(20px, 20px);
+  }
   50% {
-    transform: scale(1.2) translate(10px, 10px);
+    transform: scale(1.2) translate(40px, 40px);
+  }
+  75% {
+    transform: scale(1.1) translate(20px, 20px);
   }
   100% {
     transform: scale(1) translate(0, 0);
